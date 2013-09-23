@@ -37,7 +37,7 @@ public class Storage {
 	}
 	protected boolean isPlayerProtected(String playername)
 	{
-		if (System.currentTimeMillis() - playerprotecttime.get(playername) > config.protecttime)
+		if (playerprotecttime.containsKey(playername) && System.currentTimeMillis() - playerprotecttime.get(playername) > config.protecttime)
 		{
 			unprotectPlayer(playername);
 		}
