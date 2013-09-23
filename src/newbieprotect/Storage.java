@@ -47,7 +47,7 @@ public class Storage {
 			List<String> aregions = WGBukkit.getRegionManager(player.getWorld()).getApplicableRegionsIDs(BukkitUtil.toVector(player.getLocation()));
 			for (String region : aregions)
 			{
-				if (config.disabledegions.contains(region))
+				if (config.disabledWGregions.contains(region))
 				{
 					return false;
 				}

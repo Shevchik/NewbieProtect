@@ -23,7 +23,7 @@ public class Config {
 	protected String youCantAttackWhileProtected = ChatColor.GREEN+"Вы не можете атаковать других игроков пока у вас активирована защита новичка, напишите /pvp-on чтобы снять её";
 	protected String youCantAttackProtected = ChatColor.GREEN+"Вы не можете атаковать этого игрока, у него активна защита новичка";
 
-	protected List<String> disabledegions = new ArrayList<String>();
+	protected List<String> disabledWGregions = new ArrayList<String>();
 	
 	protected void loadConfig()
 	{
@@ -33,7 +33,7 @@ public class Config {
 		unprotectMessage = config.getString("unprotectMessage",unprotectMessage);
 		youCantAttackWhileProtected = config.getString("youCantAttaclWhileProtected",youCantAttackWhileProtected);
 		youCantAttackProtected = config.getString("youCantAttackProtected", youCantAttackProtected);
-		disabledegions = config.getStringList("disabledegions");
+		disabledWGregions = config.getStringList("disabledWGregions");
 		saveConfig();
 	}
 	
@@ -45,7 +45,7 @@ public class Config {
 		config.set("unprotectMessage",unprotectMessage);
 		config.set("youCantAttaclWhileProtected",youCantAttackWhileProtected);
 		config.set("youCantAttackProtected", youCantAttackProtected);
-		config.set("disabledegions",disabledegions);
+		config.set("disabledWGregions",disabledWGregions);
 		try {
 			config.save(configfile);
 		} catch (IOException e) {}
