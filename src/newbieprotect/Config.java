@@ -20,8 +20,8 @@ public class Config {
 	protected long protecttime = 60*60*1000;//1 hour
 	protected String protectMessage = ChatColor.GREEN+"Защита новичка активирована на "+protecttime/1000+" секунд. Внимание, защита не работает на специальных пвп регионах";
 	protected String unprotectMessage = ChatColor.GREEN+"Вы сняли с себя защиту новичка";
-	protected String youCantAttackWhileProtected = ChatColor.GREEN+"Вы не можете атаковать других игроков пока активирована защита новичка, напишите /pvp-on чтобы снять её";
-	protected String youCantAttackProtected = ChatColor.GREEN+"Вы не можете атаковать этого игрока пока у него активна защита новичка";
+	protected String youCantAttackWhileProtected = ChatColor.GREEN+"Вы не можете атаковать других игроков пока у вас активирована защита новичка, напишите /pvp-on чтобы снять её";
+	protected String youCantAttackProtected = ChatColor.GREEN+"Вы не можете атаковать этого игрока, у него активна защита новичка";
 
 	protected List<String> disabledegions = new ArrayList<String>();
 	
