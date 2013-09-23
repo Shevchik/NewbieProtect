@@ -42,7 +42,8 @@ public class Storage {
 			unprotectPlayer(playername);
 		}
 		Player player = Bukkit.getPlayerExact(playername);
-		try {
+		if (Bukkit.getPluginManager().getPlugin("WorldGuard") != null)
+		{
 			List<String> aregions = WGBukkit.getRegionManager(player.getWorld()).getApplicableRegionsIDs(BukkitUtil.toVector(player.getLocation()));
 			for (String region : aregions)
 			{
@@ -51,7 +52,7 @@ public class Storage {
 					return false;
 				}
 			}
-		} catch (Exception e) {}
+		}
 		return playerprotecttime.containsKey(playername);
 	}
 	
