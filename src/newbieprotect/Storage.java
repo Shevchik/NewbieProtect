@@ -2,6 +2,7 @@ package newbieprotect;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -86,7 +87,7 @@ public class Storage {
 		Bukkit.getScheduler().scheduleAsyncRepeatingTask(plugin, new Runnable(){
 			public void run()
 			{
-				for (String playername : playerprotecttime.keySet())
+				for (String playername : new HashSet<String>(playerprotecttime.keySet()))
 				{
 					if (System.currentTimeMillis() - playerprotecttime.get(playername) > config.protecttime)
 					{
