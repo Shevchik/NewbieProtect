@@ -38,10 +38,6 @@ public class Storage {
 	}
 	protected boolean isPlayerProtected(String playername)
 	{
-		if (playerprotecttime.containsKey(playername) && System.currentTimeMillis() - playerprotecttime.get(playername) > config.protecttime)
-		{
-			unprotectPlayer(playername);
-		}
 		Player player = Bukkit.getPlayerExact(playername);
 		if (Bukkit.getPluginManager().getPlugin("WorldGuard") != null)
 		{
