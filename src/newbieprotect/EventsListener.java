@@ -82,7 +82,7 @@ public class EventsListener implements Listener {
 	{
 		String message = event.getMessage();
 		Player player = event.getPlayer();
-		if (message.equalsIgnoreCase("/pvp-on"))
+		if (message.equalsIgnoreCase("/pvp-on") && storage.isPlayerProtected(player.getName()))
 		{
 			storage.unprotectPlayer(player.getName());
 			player.sendMessage(config.unprotectMessage);
