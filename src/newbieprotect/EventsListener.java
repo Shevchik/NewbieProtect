@@ -48,7 +48,7 @@ public class EventsListener implements Listener {
 		if (eattacker instanceof Arrow)
 		{
 			LivingEntity shooter = ((Arrow) eattacker).getShooter();
-			if (shooter instanceof Player)
+			if (shooter != null && shooter instanceof Player)
 			{
 				attacker = (Player) shooter;
 			}
