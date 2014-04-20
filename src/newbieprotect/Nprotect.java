@@ -8,9 +8,9 @@ public class Nprotect extends JavaPlugin {
 	private Config config;
 	private Storage storage;
 	private EventsListener listener;
+
 	@Override
-	public void onEnable()
-	{
+	public void onEnable() {
 		setNaggable(false);
 		config = new Config(this);
 		config.loadConfig();
@@ -20,10 +20,9 @@ public class Nprotect extends JavaPlugin {
 		listener = new EventsListener(config, storage);
 		getServer().getPluginManager().registerEvents(listener, this);
 	}
-	
+
 	@Override()
-	public void onDisable()
-	{
+	public void onDisable() {
 		HandlerList.unregisterAll(this);
 		listener = null;
 		storage.stopCheck();
@@ -31,5 +30,5 @@ public class Nprotect extends JavaPlugin {
 		storage = null;
 		config = null;
 	}
-	
+
 }
