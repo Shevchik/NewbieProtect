@@ -39,6 +39,9 @@ public class Storage {
 
 	protected boolean isPlayerProtected(String playername) {
 		Player player = Bukkit.getPlayerExact(playername);
+		if (config.disabledWorlds.contains(player.getWorld().getName())) {
+			return false;
+		}
 		if (Bukkit.getPluginManager().getPlugin("WorldGuard") != null) {
 			try {
 				List<String> aregions = WGBukkit.getRegionManager(player.getWorld()).getApplicableRegionsIDs(BukkitUtil.toVector(player.getLocation()));

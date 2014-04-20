@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.server.ServerCommandEvent;
 
 public class EventsListener implements Listener {
 
@@ -72,11 +73,19 @@ public class EventsListener implements Listener {
 			storage.unprotectPlayer(player.getName());
 			player.sendMessage(config.unprotectMessage);
 			event.setCancelled(true);
-		} else if (message.equalsIgnoreCase("/nprotect reload")
-				&& player.hasPermission("nprotect.reload")) {
+		} else if (message.equalsIgnoreCase("/nprotect reload") && player.hasPermission("nprotect.reload")) {
 			config.loadConfig();
 			player.sendMessage(ChatColor.GREEN + "Config reloaded");
 			event.setCancelled(true);
+		}
+	}
+
+	@EventHandler
+	public void onServerCommand(ServerCommandEvent event) {
+		String message = event.getCommand();
+		if (message.equalsIgnoreCase("nprotect reload")) {
+			config.loadConfig();
+			event.getSender().sendMessage(ChatColor.GREEN + "Config reloaded");
 		}
 	}
 

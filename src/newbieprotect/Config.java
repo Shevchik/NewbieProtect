@@ -3,7 +3,7 @@ package newbieprotect;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -23,7 +23,8 @@ public class Config {
 	protected String youCantAttackWhileProtected = ChatColor.GREEN + "Вы не можете атаковать других игроков пока у вас активирована защита новичка, напишите /pvp-on чтобы снять её";
 	protected String youCantAttackProtected = ChatColor.GREEN + "Вы не можете атаковать этого игрока, у него активна защита новичка";
 
-	protected List<String> disabledWGregions = new ArrayList<String>();
+	protected HashSet<String> disabledWGregions = new HashSet<String>();
+	protected HashSet<String> disabledWorlds = new HashSet<String>();	
 
 	protected void loadConfig() {
 		FileConfiguration config = YamlConfiguration.loadConfiguration(configfile);
@@ -32,7 +33,8 @@ public class Config {
 		unprotectMessage = config.getString("unprotectMessage", unprotectMessage);
 		youCantAttackWhileProtected = config.getString("youCantAttaclWhileProtected", youCantAttackWhileProtected);
 		youCantAttackProtected = config.getString("youCantAttackProtected", youCantAttackProtected);
-		disabledWGregions = config.getStringList("disabledWGregions");
+		disabledWGregions = new HashSet<String>(config.getStringList("disabledWGregions"));
+		disabledWorlds = new HashSet<String>(config.getStringList("disabledWorlds"));
 		saveConfig();
 	}
 
@@ -43,7 +45,8 @@ public class Config {
 		config.set("unprotectMessage", unprotectMessage);
 		config.set("youCantAttaclWhileProtected", youCantAttackWhileProtected);
 		config.set("youCantAttackProtected", youCantAttackProtected);
-		config.set("disabledWGregions", disabledWGregions);
+		config.set("disabledWGregions", new ArrayList<String>(disabledWGregions));
+		config.set("disabledWorlds", new ArrayList<String>(disabledWorlds));
 		try {
 			config.save(configfile);
 		} catch (IOException e) {
