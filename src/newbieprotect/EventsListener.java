@@ -26,7 +26,7 @@ public class EventsListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		if (!event.getPlayer().hasPlayedBefore()) {
-			storage.protectPlayer(event.getPlayer().getName(), System.currentTimeMillis());
+			storage.protectPlayer(event.getPlayer(), System.currentTimeMillis());
 			event.getPlayer().sendMessage(config.protectMessage);
 		}
 	}
@@ -52,11 +52,11 @@ public class EventsListener implements Listener {
 		}
 		// now check
 		if (attacker != null && entity != null) {
-			if (storage.isPlayerProtected(entity.getName())) {
+			if (storage.isPlayerProtected(entity)) {
 				event.setCancelled(true);
 				attacker.sendMessage(config.youCantAttackProtected);
 			}
-			if (storage.isPlayerProtected(attacker.getName())) {
+			if (storage.isPlayerProtected(attacker)) {
 				event.setCancelled(true);
 				attacker.sendMessage(config.youCantAttackWhileProtected);
 			}
@@ -69,8 +69,8 @@ public class EventsListener implements Listener {
 	public void onCommand(PlayerCommandPreprocessEvent event) {
 		String message = event.getMessage();
 		Player player = event.getPlayer();
-		if (message.equalsIgnoreCase("/pvp-on") && storage.isPlayerProtected(player.getName())) {
-			storage.unprotectPlayer(player.getName());
+		if (message.equalsIgnoreCase("/pvp-on") && storage.isPlayerProtected(player)) {
+			storage.unprotectPlayer(player);
 			player.sendMessage(config.unprotectMessage);
 			event.setCancelled(true);
 		} else if (message.equalsIgnoreCase("/nprotect reload") && player.hasPermission("nprotect.reload")) {
