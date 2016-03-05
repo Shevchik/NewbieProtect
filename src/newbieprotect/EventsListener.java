@@ -3,7 +3,6 @@ package newbieprotect;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -12,6 +11,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.server.ServerCommandEvent;
+import org.bukkit.projectiles.ProjectileSource;
 
 public class EventsListener implements Listener {
 
@@ -41,7 +41,7 @@ public class EventsListener implements Listener {
 		if (eattacker instanceof Player) {
 			attacker = (Player) eattacker;
 		} else if (eattacker instanceof Arrow) {
-			LivingEntity shooter = ((Arrow) eattacker).getShooter();
+			ProjectileSource shooter = ((Arrow) eattacker).getShooter();
 			if (shooter != null && shooter instanceof Player) {
 				attacker = (Player) shooter;
 			}

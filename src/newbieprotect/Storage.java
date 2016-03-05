@@ -85,7 +85,7 @@ public class Storage {
 	private int taskid;
 
 	protected void startCheck() {
-		Bukkit.getScheduler().scheduleAsyncRepeatingTask(
+		Bukkit.getScheduler().runTaskTimerAsynchronously(
 			plugin,
 			new Runnable() {
 				@Override
